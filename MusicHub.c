@@ -29,8 +29,9 @@ int main()
     printf("4. Number of songs in current playlist\n");
     printf("5. About\n");
     printf("6. Exit\n");
-
     
+    printf("Enter your choice: \n");
+    scanf("%d",&choice);
 
 
     return 0;
