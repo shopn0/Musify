@@ -22,7 +22,7 @@ int main()
     }
     printf("%s\n", text);
 //Menu showcase
-    printf("\nMenu: \n;");
+    printf("\nMenu: \n");
     printf("\n1. Add a song to playlist\n");
     printf("2. Remove a song from the playlist\n");
     printf("3. Search for a song\n");
