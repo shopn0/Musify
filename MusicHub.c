@@ -2,6 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+struct Song
+{
+    char title[50];
+    char artist[70];
+    int duration;
+
+    struct Song* next;
+};
+
+
 int main()
 {
 
