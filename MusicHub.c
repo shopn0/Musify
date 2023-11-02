@@ -11,6 +11,16 @@ struct Song
     struct Song* next;
 };
 
+struct Song* playlist = NULL; // confusion
+
+void insertSong(char title[], char artist[], int duration){
+    struct Song* newSong=(struct Song*)malloc(sizeof(struct Song));
+    strcpy(newSong->title, title);
+    strcpy(newSong->artist, artist);
+    newSong->duration = duration;
+    newSong->next = newSong;
+    printf("Song added to the playlist successfully.\n");
+}
 
 int main()
 {
@@ -42,6 +52,25 @@ int main()
     
     printf("Enter your choice: \n");
     scanf("%d",&choice);
+
+        switch (choice)
+        {
+        case 1:
+            printf("\nEnter song details:\n");
+            printf("Titile\n");
+            scanf("%s", &title);
+            printf("Artist\n");
+            scanf("%s", &artist);
+            printf("Duration (in seconds): \n");
+            scanf("%d", &duration);
+            insertSong(title, artist, duration);
+
+
+            break;
+        
+        default:
+            printf("Invalid Choice!!!\n");
+        }
 
 
     return 0;
