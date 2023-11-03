@@ -65,7 +65,26 @@ void searchSong(char title[]){
     }
     printf("\nSong not found in the playlist\n\n");
 }
-void disPlaylist(){}
+void disPlaylist(){
+    int index = 1;
+    int count = 0;
+    struct Song* ptr = playlist;
+    while (ptr!=NULL)
+    {
+        count++;
+        ptr = ptr->next;
+    }
+    printf("\nTotal number of songs in current playlist: %d\n\n",count);
+ptr = playlist; //conf.
+    while (ptr!=NULL)
+    {
+        printf("%d no. song: %s\n",index, ptr->title);
+        index++;
+        ptr = ptr->next;
+    }
+    
+}
+
 void about(){
     printf("\nTeam SampleX\nAn open source project 2023.");
     return;
@@ -105,7 +124,7 @@ int main()
         switch (choice)
         {
         case 1:
-            printf("\nEnter song details:\n");
+            printf("\n-Enter song details-\n");
             printf("Titile: \n");
             scanf("%s", &title);
             printf("Artist:\n");
@@ -117,14 +136,14 @@ int main()
 
             break;
         case 2:
-            printf("Enter song name to delete:\n");
+            printf("\n-Enter song name to delete-\n");
             scanf("%s",title);
             deleteSong(title);
             
             break;
         
         case 3:
-            printf("Enter song name to search:\n");
+            printf("\nEnter song name to search:\n");
             scanf("%s",&title);
             searchSong(title);
             
