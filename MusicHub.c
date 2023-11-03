@@ -11,7 +11,7 @@ struct Song
     struct Song* next;
 };
 
-struct Song* playlist = NULL; // confusion
+struct Song* playlist = NULL; // conf.1
 
 void insertSong(char title[], char artist[], int duration){
     struct Song* newSong=(struct Song*)malloc(sizeof(struct Song));
@@ -22,6 +22,10 @@ void insertSong(char title[], char artist[], int duration){
     printf("Song added to the playlist successfully.\n");
 }
 
+void deleteSong(){}
+void searchSong(){}
+void disPlaylist(){}
+void about(){}
 int main()
 {
 
@@ -30,12 +34,11 @@ int main()
     char artist[70];
     int duration;
 
-// Print the centered project name text
-    int consoleWidth = 80;  // Adjust this value based on your console's width
-    char text[] = "Musify"; // Text to be centered
+    int consoleWidth = 80;  
+    char text[] = "Musify"; 
     int len = strlen(text);
     int padding = (consoleWidth - len) / 2;
-    // Print spaces for padding on the left
+    
     for (int i = 0; i < padding; i++)
     {
         printf(" ");
@@ -46,7 +49,7 @@ int main()
     printf("\n1. Add a song to playlist\n");
     printf("2. Remove a song from the playlist\n");
     printf("3. Search for a song\n");
-    printf("4. Number of songs in current playlist\n");
+    printf("4. Display current playlist\n");
     printf("5. About\n");
     printf("6. Exit\n");
     
@@ -67,11 +70,31 @@ int main()
 
 
             break;
+        case 2:
+            printf("Remove a song from the playlist\n");
+            scanf("%s",title);
+            deleteSong(title);
+            
+            break;
         
+        case 3:
+            printf("Search for a song\n");
+            scanf("%s",&title);
+            searchSong(title);
+            
+            break;
+        case 4:
+            disPlaylist();
+
+            break;
+        case 5:
+            about();
+            
+            break;
+        case 6: 
+            exit(0);
+                    
         default:
-            printf("Invalid Choice!!!\n");
+            printf("Invalid Choice. Please try again.\n");
         }
-
-
-    return 0;
 }
