@@ -4,8 +4,8 @@
 
 struct Song
 {
-    char title[50];
-    char artist[70];
+    char title[40];
+    char artist[80];
     int duration;
 
     struct Song* next;
@@ -20,7 +20,7 @@ void insertSong(char title[], char artist[], int duration){
     newSong->duration = duration;
     newSong->next = playlist;
     playlist = newSong;
-    printf("Song added to the playlist successfully.\n");
+    printf("\nSong added to the playlist successfully.\n\n");
     
 }
 
@@ -40,7 +40,7 @@ void deleteSong(char title[]){
                 playlist = current->next;
             }
             free (current);   
-            printf("Song deleted from the playlist.\n");
+            printf("\nSong deleted from the playlist.\n\n");
             return;
         }
         prev = current;
@@ -55,7 +55,7 @@ void searchSong(char title[]){
     {
         if (strcmp(current->title, title) == 0)
         {
-            printf("\nSong found:\n");
+            printf("\nSong found:\n\n");
             printf("Title: %s\n", current->title);
             printf("Artist: %s\n", current->artist);
             printf("Duration: %d seconds\n", current->duration);
@@ -63,11 +63,11 @@ void searchSong(char title[]){
         }
         current = current->next;
     }
-    printf("Song not found in the playlist\n");
+    printf("\nSong not found in the playlist\n\n");
 }
 void disPlaylist(){}
 void about(){
-    printf("1\n");
+    printf("\nTeam SampleX\nAn open source project 2023.");
     return;
 }
 int main()
@@ -124,7 +124,7 @@ int main()
             break;
         
         case 3:
-            printf("Search for a song\n");
+            printf("Enter song name to search:\n");
             scanf("%s",&title);
             searchSong(title);
             
