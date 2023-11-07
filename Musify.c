@@ -74,11 +74,11 @@ void disPlaylist(){
         count++;
         ptr = ptr->next;
     }
-    printf("\nTotal number of songs in current playlist: %d\n\n",count);
+    printf("\nTotal number of songs in current playlist: %d\n",count);
 ptr = playlist; //conf.
     while (ptr!=NULL)
     {
-        printf("%d no. song: %s\n",index, ptr->title);
+        printf("\n %d no. song: %s\n\n",index, ptr->title);
         index++;
         ptr = ptr->next;
     }
@@ -86,9 +86,45 @@ ptr = playlist; //conf.
 }
 
 void about(){
-    printf("\nTeam SampleX\nAn open source project 2023.");
+    printf("\nTeam SampleX\nAn open source project 2023.\n");
     return;
 }
+
+void savePlaylist() {
+    FILE* file = fopen("playlist.txt", "w");
+    if (file == NULL) {
+        printf("Error opening the file for saving data.\n");
+        return;
+    }
+    struct Song* current = playlist;
+    while (current!= NULL)
+    {
+        fprintf(file, "%s;%s;%d\n", current->title, current->artist, current->duration);
+        current = current->next;
+    }
+    fclose(file);
+    printf("Playlist Saved!!\n");
+}
+
+void loadPlaylist() {
+    FILE* file = fopen("playlist.txt", "r");
+    if (file == NULL) {
+        printf("No saved playlist found.\n");
+        return;
+    }
+
+    char title[40];
+    char artist[80];
+    int duration;
+
+    while (fscanf(file, "%[^;];%[^;];%d\n", title, artist, &duration) == 3) {
+        insertSong(title, artist, duration);
+    }
+
+    fclose(file);
+    //printf("Playlist loaded from 'playlist.txt'.\n");
+}
+
 int main()
 {
 
@@ -96,6 +132,8 @@ int main()
     char title[100];
     char artist[100];
     int duration;
+
+loadPlaylist();
 
     while(1)
     {
@@ -157,7 +195,9 @@ int main()
             
             break;
         case 6: 
-            exit(0);
+
+            savePlaylist();
+            exit(1);
                     
         default:
             printf("Invalid Choice. Please try again.\n");
